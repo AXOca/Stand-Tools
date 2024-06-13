@@ -3,7 +3,7 @@
 > "Art is the only way to run away without leaving home." - Faber
 
 ### Projects:
-- [Stand Support Tool (SST)](https://github.com/AXOca/Stand-Tools/tree/main/SST) - See what I have been working on here.
+- [Stand Support Tool (SST)](https://github.com/AXOca/Stand-Tools/tree/main/SST)
 
 More to follow...
 
