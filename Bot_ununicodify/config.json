@@ -1,0 +1,18 @@
+{
+    "clientId": "x",
+    "guildId": "x",
+    "embedColor": "#FF00FF",
+    "rateLimitMS": "250",
+    "dehoistjoins": true,
+    "dehoistrenames": true,
+    "bulkDeleteIntervalMS": "2000",
+    "deletedLogChannelID": "x",
+    "commandsRoleID": [
+        926612713174215800,
+        1272465732677204300
+    ],
+    "noRebanID": [
+        "822826387521288278"
+    ],
+    "autoReban": true
+}

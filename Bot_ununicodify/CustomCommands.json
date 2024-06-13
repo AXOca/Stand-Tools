@@ -1,0 +1,25 @@
+[
+    {
+        "command": "!test",
+        "title": "Title",
+        "description": "Test\nTest",
+        "color": "#FF00FF",
+        "button": {
+            "label": "Label",
+            "URL": "https://www.youtube.com/watch?v=yq0_ApTwNH4"
+        },
+        "monthlyUsage": 0,
+        "totalUsage": 0
+    },
+    {
+        "command": "!test2",
+        "title": "Test2",
+        "description": "Description",
+        "color": "#FF00FF",
+        "attachments": [
+            "cat-spinning.gif"
+        ],
+        "monthlyUsage": 0,
+        "totalUsage": 0
+    }
+]

@@ -1,0 +1,70 @@
+[
+    {
+        "locale": "EN",
+        "questions": [
+            {
+                "title": "How do I get my account back?",
+                "answer": "xyz",
+                "tags": [
+                    "account",
+                    "lost",
+                    "id",
+                    "commontest"
+                ],
+                "index":0
+            },
+            {
+                "title": "What is 1+1?",
+                "answer": "2",
+                "tags": [
+                    "maths",
+                    "2",
+                    "sum",
+                    "commontest"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "title": "Reference",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1"
+                    }
+                ],
+                "index":1
+            }
+        ]
+    },
+    {
+        "locale": "NL",
+        "questions": [
+            {
+                "title": "Hoe krijg ik mijn account terug?",
+                "answer": "xyz",
+                "tags": [
+                    "account",
+                    "verloren",
+                    "id",
+                    "commontest"
+                ],
+                "index":0
+            },
+            {
+                "title": "Wat is 1+1?",
+                "answer": "2",
+                "tags": [
+                    "wiskunde",
+                    "2",
+                    "optellen",
+                    "commontest"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "title": "Verwijzing",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1"
+                    }
+                ],
+                "index":1
+            }
+        ]
+    }
+]

@@ -1,0 +1,48 @@
+[
+    {
+        "locale": "EN",
+        "questions": [
+            {
+                "title": "What is 1+1?",
+                "answer": "2",
+                "tags": [
+                    "maths",
+                    "2",
+                    "sum",
+                    "commontest"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "title": "Reference",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1"
+                    }
+                ],
+                "index": 1
+            }
+        ]
+    },
+    {
+        "locale": "NL",
+        "questions": [
+            {
+                "title": "Wat is 1+1?",
+                "answer": "2",
+                "tags": [
+                    "wiskunde",
+                    "2",
+                    "optellen",
+                    "commontest"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1",
+                        "title": "Verwijzing"
+                    }
+                ],
+                "index": 1
+            }
+        ]
+    }
+]

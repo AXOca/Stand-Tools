@@ -1,0 +1,115 @@
+[
+    {
+        "locale": "EN",
+        "questions": [
+            {
+                "title": "How do I get my account back?",
+                "answer": "xyz",
+                "tags": [
+                    "account",
+                    "lost",
+                    "id",
+                    "commontest"
+                ],
+                "index": 0
+            },
+            {
+                "title": "What is 1+1?",
+                "answer": "2",
+                "tags": [
+                    "maths",
+                    "2",
+                    "sum",
+                    "commontest"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "title": "Reference",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1"
+                    }
+                ],
+                "index": 1
+            },
+            {
+                "title": "Das ist ein Test (DE)1",
+                "answer": "Das ist ein Test (DE)2",
+                "tags": [
+                    "test",
+                    "deutsch"
+                ],
+                "index": 2
+            }
+        ]
+    },
+    {
+        "locale": "NL",
+        "questions": [
+            {
+                "title": "Hoe krijg ik mijn account terug?",
+                "answer": "xyz",
+                "tags": [
+                    "account",
+                    "verloren",
+                    "id",
+                    "commontest"
+                ],
+                "index": 0
+            },
+            {
+                "title": "Wat is 1+1?",
+                "answer": "2",
+                "tags": [
+                    "wiskunde",
+                    "2",
+                    "optellen",
+                    "commontest"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1",
+                        "title": "Verwijzing"
+                    }
+                ],
+                "index": 1
+            }
+        ]
+    },
+    {
+        "locale": "DE",
+        "questions": [
+            {
+                "title": "Account ID verloren",
+                "answer": "You get it back by doing following:\\n-Test\\n-Test",
+                "tags": [
+                    "account",
+                    "lost",
+                    "id",
+                    "commontest",
+                    "verloren"
+                ],
+                "index": 0
+            },
+            {
+                "title": "Was ist 1+1?",
+                "answer": "Es ist zwei!",
+                "tags": [
+                    "maths",
+                    "2",
+                    "sum",
+                    "commontest",
+                    "mathe"
+                ],
+                "interactions": [
+                    {
+                        "type": "link",
+                        "link": "https://en.wikipedia.org/wiki/1%2B1",
+                        "title": "Reference"
+                    }
+                ],
+                "index": 1
+            }
+        ]
+    }
+]
