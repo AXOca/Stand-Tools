@@ -8,7 +8,7 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
 
 ### Version 0.2 06-16-24
 - **New Feature**: Added "AV Checker" to identify the user's antivirus software.
-  - Thanks to bababoiiiii for contributing by writing the batch file for it.
+  - Thanks to stand.dll and bababoiiiii for contributing by writing the batch file for it.
 
 ### Version 0.1 - 06-16-24
 - Initial release with the following features:
