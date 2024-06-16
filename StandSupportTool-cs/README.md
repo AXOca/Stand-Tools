@@ -30,6 +30,7 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
   - DL Launchpad
   - Add Exclusion
   - Activation Key
+  - Switch Network Protocol for Stand
 
 ## Known Issues
 
