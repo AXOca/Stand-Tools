@@ -9,6 +9,7 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
 ## To-Do List
 
 - Improve the "Copy Log to Clipboard" feature by allowing users to select the number of instances of Stand to be copied (from one Welcome Message to the next).
+- Add translation support for all languages already supported by Stand itself.
 
 ## Changelog
 
