@@ -12,6 +12,9 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
 
 ## Changelog
 
+### Version 0.3 06-16-24
+- Fixed Auto Updater
+
 ### Version 0.2 06-16-24
 - **New Feature**: Added "AV Checker" to identify the user's antivirus software.
   - Thanks to stand.dll and bababoiiiii for contributing by writing the batch file for it.
@@ -30,4 +33,4 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
 
 ## Known Issues
 
-- The auto updater is broken and needs to be fixed.
+- None
