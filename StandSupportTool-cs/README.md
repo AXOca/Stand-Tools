@@ -22,3 +22,7 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
   - Add Exclusion
   - Protocol
   - Activation Key
+
+## Known Issues
+
+- The auto updater is broken and needs to be fixed.
