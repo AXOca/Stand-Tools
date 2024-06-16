@@ -2,7 +2,7 @@
 
 Initial concept was made with Python on this project: [SST](https://github.com/AXOca/Stand-Tools/tree/main/SST)
 
-Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial polished version of my rough Python script in C#. They invited me to his repo, and I added a few of features and optimized it. I also made the design (which is much easier in Visual Studio than what I did previously). Now, it's at least a tiny bit stand look-a-like like the website. That's it.
+Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial polished version of my rough Python script in C#. They invited me to his repo, and I added a few features and optimized it. I also made the design (which is much easier in Visual Studio than what I did previously). Now, it's at least a tiny bit stand look-a-like like the website. That's it.
 
 ## Functions
 
