@@ -10,7 +10,7 @@ Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial poli
 - **New Feature**: Added "AV Checker" to identify the user's antivirus software.
   - Thanks to stand.dll and bababoiiiii for contributing by writing the batch file for it.
 
-### Version 0.1 - 06-16-24
+### Version 0.1 06-16-24
 - Initial release with the following features:
   - Full Reset of Stand
   - Clear Cache of Stand
