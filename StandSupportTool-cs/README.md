@@ -4,34 +4,21 @@ Initial concept was made with Python on this project: [SST](https://github.com/A
 
 Afterwards, [Alessandro](https://github.com/alessandromrc) made the initial polished version of my rough Python script in C#. They invited me to his repo, and I added a few features and optimized it. I also made the design (which is much easier in Visual Studio than what I did previously). Now, it's at least a tiny bit stand look-a-like like the website. That's it.
 
-## Functions
+## Changelog
 
-### Full Reset of Stand
-- Backup logic to ensure data is saved before reset.
+### Version 0.2 06-16-24
+- **New Feature**: Added "AV Checker" to identify the user's antivirus software.
+  - Thanks to bababoiiiii for contributing by writing the batch file for it.
 
-### Clear Cache of Stand
-- Deletes BIN and Cache files to free up space and resolve issues.
-
-### Copy Log to Clipboard
-- Logic to ensure logs do not exceed Discord's file size limits when copied.
-
-### Copy Profile to Clipboard
-- Copies the profile that is loaded when you start Stand.
-
-### Clear Hotkeys
-- Deletes the `Hotkeys.txt` file to reset hotkeys.
-
-### 60% Hotkeys
-- Changes Stand's hotkeys to something useful for people without FN Keys and without a Numpad.
-
-### DL Launchpad
-- Downloads the launchpad semi-encrypted to the desktop. The user can open it with the password "stand.gg".
-
-### Add Exclusion
-- Adds Stand's BIN folder to the exclusions of Windows Defender.
-
-### Protocol
-- A dropdown menu to change the network protocol Stand is using.
-
-### Activation Key
-- Shows the current activation key that is in `Activation Key.txt` and allows easy changes with the "Set Key" button.
+### Version 0.1 - 06-16-24
+- Initial release with the following features:
+  - Full Reset of Stand
+  - Clear Cache of Stand
+  - Copy Log to Clipboard
+  - Copy Profile to Clipboard
+  - Clear Hotkeys
+  - 60% Hotkeys
+  - DL Launchpad
+  - Add Exclusion
+  - Protocol
+  - Activation Key
