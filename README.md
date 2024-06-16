@@ -3,8 +3,7 @@
 > "Art is the only way to run away without leaving home." - Faber
 
 ### Projects:
-- [Stand Support Tool (SST)](https://github.com/AXOca/Stand-Tools/tree/main/SST)
-
+...
 More to follow...
 
 ### Discord Bots
@@ -16,4 +15,5 @@ More to follow...
 - [Discord PollDetection](https://github.com/AXOca/Stand-Tools/tree/main/Bot_PollDetection) - Bot to detect and manage poll messages.
 - [Discord Blackjack](https://github.com/AXOca/Stand-Tools/tree/main/Bot_BlackJack) - Play Blackjack directly in Discord.
 - [Discord No22](https://github.com/AXOca/Stand-Tools/tree/main/BotNo22) - FAQ Bot. (Temporarily Discontinued)
-- [Stand Batch Scripts (SBS)](https://github.com/AXOca/Stand-Tools/tree/main/SBS) 
+- [Stand Batch Scripts (SBS)](https://github.com/AXOca/Stand-Tools/tree/main/SBS)
+- [Stand Support Tool (SST) - Python](https://github.com/AXOca/Stand-Tools/tree/main/SST) 
