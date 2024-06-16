@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FOhk6sIFBhsg3FINZaVMuBUgfh2KU7Z4I9Tj8sM2ln7+lY3SHDwtGsWxjITIj4vfdIPHVG5puBo9kSBDtxPnlA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Kodama\\Desktop\\Stand\\StandSupportTool\\old\\StandSupportTool\\StandSupportTool\\StandSupportTool.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Kodama\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.5\\microsoft.net.illink.tasks.8.0.5.nupkg.sha512"
+  ],
+  "logs": []
+}
