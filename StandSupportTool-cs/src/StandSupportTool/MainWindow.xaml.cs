@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace StandSupportTool
 {
@@ -18,7 +19,7 @@ namespace StandSupportTool
         private static HotkeyManager hotkeyManager = new HotkeyManager();
         private static ClearHotkeysManager clearHotkeysManager = new ClearHotkeysManager();
         private static UpdateManager updateManager;
-
+        private static AntivirusInfo antivirusInfo = new AntivirusInfo();
         public MainWindow()
         {
             InitializeComponent();
@@ -211,7 +212,15 @@ namespace StandSupportTool
 
         private void RunTest_Click(object sender, RoutedEventArgs e)
         {
-            BatchScriptExecutor.ExecuteBatchScript();
+            List<AntivirusInfo> avInfos = antivirusInfo.get();
+            string message = "Detected Antiviruses:\n";
+
+            foreach (AntivirusInfo info in avInfos)
+            {
+                message += info.DisplayName + " at: " + info.ExePath + "\n";
+            }
+
+            MessageBox.Show(message, "Av Checker", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void ClearH_Click(object sender, RoutedEventArgs e)

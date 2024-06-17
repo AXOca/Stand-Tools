@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kodama\\Desktop\\Stand\\StandSupportTool\\old\\StandSupportTool\\StandSupportTool\\StandSupportTool.csproj": {}
+    "C:\\Users\\user\\Documents\\GitHub\\Stand-Tools\\StandSupportTool-cs\\src\\StandSupportTool\\StandSupportTool.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kodama\\Desktop\\Stand\\StandSupportTool\\old\\StandSupportTool\\StandSupportTool\\StandSupportTool.csproj": {
+    "C:\\Users\\user\\Documents\\GitHub\\Stand-Tools\\StandSupportTool-cs\\src\\StandSupportTool\\StandSupportTool.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kodama\\Desktop\\Stand\\StandSupportTool\\old\\StandSupportTool\\StandSupportTool\\StandSupportTool.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Documents\\GitHub\\Stand-Tools\\StandSupportTool-cs\\src\\StandSupportTool\\StandSupportTool.csproj",
         "projectName": "StandSupportTool",
-        "projectPath": "C:\\Users\\Kodama\\Desktop\\Stand\\StandSupportTool\\old\\StandSupportTool\\StandSupportTool\\StandSupportTool.csproj",
-        "packagesPath": "C:\\Users\\Kodama\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kodama\\Desktop\\Stand\\StandSupportTool\\old\\StandSupportTool\\StandSupportTool\\obj\\",
+        "projectPath": "C:\\Users\\user\\Documents\\GitHub\\Stand-Tools\\StandSupportTool-cs\\src\\StandSupportTool\\StandSupportTool.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\Documents\\GitHub\\Stand-Tools\\StandSupportTool-cs\\src\\StandSupportTool\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Kodama\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -52,7 +48,7 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.5, )",
+              "version": "[8.0.3, )",
               "autoReferenced": true
             }
           },
@@ -75,7 +71,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
