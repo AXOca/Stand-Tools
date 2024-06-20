@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Windows;
 
 namespace StandSupportTool
@@ -7,83 +9,188 @@ namespace StandSupportTool
     public class HotkeyManager
     {
         private readonly string hotkeysFilePath;
+        private ObservableCollection<Hotkey> _hotkeys;
+
+        bool writeSmallerKeyboardHotkeysOnSave = false;
+
+        List<Hotkey> Hotkeys60 = new List<Hotkey>
+        {
+            new Hotkey { KeyBinding = "Tab", Action = "Open/Close Menu" },
+            new Hotkey { KeyBinding = "O", Action = "Previous Tab" },
+            new Hotkey { KeyBinding = "P", Action = "Next Tab" },
+            new Hotkey { KeyBinding = "I", Action = "Up" },
+            new Hotkey { KeyBinding = "K", Action = "Down" },
+            new Hotkey { KeyBinding = "J", Action = "Left" },
+            new Hotkey { KeyBinding = "L", Action = "Right" },
+            new Hotkey { KeyBinding = "Enter", Action = "Click" },
+            new Hotkey { KeyBinding = "Backspace", Action = "Back" },
+            new Hotkey { KeyBinding = "O, Numpad 3, H", Action = "Context Menu" }
+        };
+
+        public ObservableCollection<Hotkey> Hotkeys
+        {
+            get => _hotkeys;
+            private set => _hotkeys = value;
+        }
+
+        public class Hotkey
+        {
+            public string Action { get; set; }
+            public string KeyBinding { get; set; }
+        }
 
         public HotkeyManager()
         {
-            // Initialize the path to the hotkeys file
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
             string standDir = Path.Combine(appDataPath, "Stand");
             hotkeysFilePath = Path.Combine(standDir, "Hotkeys.txt");
-        }
 
-        // Configure hotkeys with user confirmation
-        public void ConfigureHotkeys()
-        {
-            MessageBoxResult result = MessageBox.Show(
-                "This will overwrite your current Hotkeys to match it with 60% keyboards that do not have function keys. Are you sure you want to do that?",
-                "Confirm Hotkey Overwrite",
-                MessageBoxButton.YesNoCancel,
-                MessageBoxImage.Warning);
+            Directory.CreateDirectory(standDir);
 
-            if (result == MessageBoxResult.Yes)
+            _hotkeys = new ObservableCollection<Hotkey>();
+
+            if (File.Exists(hotkeysFilePath))
             {
-                WriteHotkeys();
+                var parsedHotkeys = Parse();
+                foreach (var hotkey in parsedHotkeys)
+                {
+                    _hotkeys.Add(hotkey);
+                }
             }
         }
 
-        // Write the hotkeys configuration to the file
-        private void WriteHotkeys()
-        {
-            try
-            {
-                string standDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Stand");
 
-                // Create directory if it doesn't exist
-                if (!Directory.Exists(standDir))
+        public List<Hotkey> Parse()
+        {
+            List<Hotkey> hotkeys = new List<Hotkey>();
+
+            using (StreamReader reader = new StreamReader(hotkeysFilePath))
+            {
+                string line;
+
+                while ((line = reader.ReadLine()) != null)
                 {
-                    Directory.CreateDirectory(standDir);
+                    if (line.Contains(":"))
+                    {
+                        // Skip the Compatibility Tree Version!
+                        if (line.Contains("Tree Compatibility Version"))
+                            continue;
+
+                        string[] parts = line.Split(':');
+                        string actionName = parts[0].Trim();
+                        string keyBinding = parts[1].Trim();
+
+                        hotkeys.Add(new Hotkey
+                        {
+                            Action = actionName,
+                            KeyBinding = keyBinding
+                        });
+                    }
+                }
+            }
+
+            return hotkeys;
+        }
+
+        // Configures the 60% keyboard keys
+        public void SmallerKeyboard()
+        {
+            foreach (var hotkey in Hotkeys60)
+            {
+                if (Hotkeys.Any(h => h.KeyBinding == hotkey.KeyBinding))
+                {
+                    MessageBox.Show($"The key '{hotkey.KeyBinding}' is already used. Please replace it.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+                else
+                {
+                    Hotkeys.Add(hotkey);
+                }
+            }
+            writeSmallerKeyboardHotkeysOnSave = true;
+        }
+        private string ReplaceLineWithPreservedIndentation(string originalLine, string newLine)
+        {
+            int tabCount = originalLine.Length - originalLine.TrimStart('\t').Length;
+            return new string('\t', tabCount) + newLine; 
+        }
+
+        public void SaveHotkeys()
+        {
+            List<string> lines = new List<string>();
+            if (File.Exists(hotkeysFilePath))
+            {
+                lines.AddRange(File.ReadAllLines(hotkeysFilePath));
+            }
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                string line = lines[i];
+
+                if (!line.Contains(":"))
+                    continue;
+
+                string[] parts = line.Split(':');
+                string actionName = parts[0].Trim();
+                string keyBinding = parts[1].Trim();
+
+                // Check if keyBinding matches any KeyBinding in Hotkeys60
+                if (!Hotkeys60.Any(h => h.KeyBinding == keyBinding))
+                {
+                    // Find matching hotkey in Hotkeys list
+                    var hotkey = Hotkeys.FirstOrDefault(h => h.Action == actionName);
+                    if (hotkey != null)
+                    {
+                        // Construct the updated line preserving original tab-based indentation
+                        string updatedLine = $"{actionName}: {hotkey.KeyBinding}";
+
+                        // Replace the line while preserving original tab-based indentation
+                        lines[i] = ReplaceLineWithPreservedIndentation(lines[i], updatedLine);
+                    }
+                }
+            }
+
+            // Check if we need to write smaller keyboard hotkeys
+            if (writeSmallerKeyboardHotkeysOnSave)
+            {
+                // Find or create the "Keyboard Input Scheme" section
+                int inputSchemeIndex = lines.FindIndex(line => line.Trim() == "Keyboard Input Scheme");
+                if (inputSchemeIndex == -1)
+                {
+                    // If "Keyboard Input Scheme" section is not found, add it at the end
+                    lines.Add("Stand");
+                    lines.Add("\tSettings");
+                    lines.Add("\t\tInput");
+                    lines.Add("\t\t\tKeyboard Input Scheme");
+                    inputSchemeIndex = lines.Count;
+                }
+                else
+                {
+                    // Move to the line after the "Keyboard Input Scheme" header
+                    inputSchemeIndex++;
                 }
 
-                // Hotkey configuration content
-                string hotkeyContent = @"
-Tree Compatibility Version: 49
-Stand
-    Settings
-        Input
-            Keyboard Input Scheme
-                Open/Close Menu: Tab
-                Previous Tab: O
-                Next Tab: P
-                Up: I
-                Down: K
-                Left: J
-                Right: L
-                Click: Enter
-                Back: Backspace";
+                // Add or update hotkeys under the "Context Menu" subsection
+                foreach (var hotkey in Hotkeys60)
+                {
+                    int hotkeyIndex = lines.FindIndex(inputSchemeIndex, line => line.Trim().StartsWith(hotkey.Action + ":"));
 
-                // Write the content to the file
-                File.WriteAllText(hotkeysFilePath, hotkeyContent.Trim());
+                    if (hotkeyIndex != -1)
+                    {
+                        // Update existing hotkey
+                        lines[hotkeyIndex] = $"\t\t\t\t\t{hotkey.Action}: {hotkey.KeyBinding}";
+                    }
+                    else
+                    {
+                        // Add new hotkey
+                        string hotkeyLine = $"\t\t\t\t\t{hotkey.Action}: {hotkey.KeyBinding}";
+                        lines.Insert(inputSchemeIndex++, hotkeyLine);
+                    }
+                }
+            }
+            File.WriteAllLines(hotkeysFilePath, lines);
 
-                // Show success message
-                MessageBox.Show(@"Hotkeys have been set successfully:
-                Open/Close Menu: Tab
-                Previous Tab: O
-                Next Tab: P
-                Up: I
-                Down: K
-                Left: J
-                Right: L
-                Click: Enter
-                Back: Backspace",
-                "Success",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
-            }
-            catch (Exception ex)
-            {
-                // Show error message
-                MessageBox.Show($"Failed to write hotkeys: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            // Avoid writing multiple times
+            writeSmallerKeyboardHotkeysOnSave = false;
         }
     }
 }
