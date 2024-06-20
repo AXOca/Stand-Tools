@@ -177,12 +177,12 @@ namespace StandSupportTool
                     if (hotkeyIndex != -1)
                     {
                         // Update existing hotkey
-                        lines[hotkeyIndex] = $"\t\t\t\t\t{hotkey.Action}: {hotkey.KeyBinding}";
+                        lines[hotkeyIndex] = $"\t\t\t\t{hotkey.Action}: {hotkey.KeyBinding}";
                     }
                     else
                     {
                         // Add new hotkey
-                        string hotkeyLine = $"\t\t\t\t\t{hotkey.Action}: {hotkey.KeyBinding}";
+                        string hotkeyLine = $"\t\t\t\t{hotkey.Action}: {hotkey.KeyBinding}";
                         lines.Insert(inputSchemeIndex++, hotkeyLine);
                     }
                 }

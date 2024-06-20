@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("StandSupportTool")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c3373b72f707e59b957060a175e12bd3caa5662c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a42a7f58380153c7fd11f45b4bc96bcc456d188a")]
 [assembly: System.Reflection.AssemblyProductAttribute("StandSupportTool")]
 [assembly: System.Reflection.AssemblyTitleAttribute("StandSupportTool")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
