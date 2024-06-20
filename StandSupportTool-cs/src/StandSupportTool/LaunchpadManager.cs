@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace StandSupportTool
 {
-    public static class TestManager
+    public static class LaunchpadManager
     {
         public static void PerformTest()
         {

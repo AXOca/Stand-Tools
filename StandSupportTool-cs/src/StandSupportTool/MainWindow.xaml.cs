@@ -21,6 +21,7 @@ namespace StandSupportTool
         private static UpdateManager updateManager;
         private static AntivirusInfo antivirusInfo = new AntivirusInfo();
         private static DashboardLinkOpener dashboardLinkOpener = new DashboardLinkOpener();
+        private static CacheManager cacheManager = new CacheManager();
 
         public MainWindow()
         {
@@ -88,25 +89,7 @@ namespace StandSupportTool
 
         private void ClearCache_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                // Define cache directory path
-                string cacheDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Stand/Cache");
-
-                if (Directory.Exists(cacheDir))
-                {
-                    Directory.Delete(cacheDir, true);
-                    MessageBox.Show("All Cache data has been deleted.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Cache directory does not exist.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Failed to delete Cache data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            cacheManager.ClearCache();
         }
 
         private void SwitchProtocol_Click(object sender, RoutedEventArgs e)
@@ -143,53 +126,7 @@ namespace StandSupportTool
 
         private void SetActivationKey_Click(object sender, RoutedEventArgs e)
         {
-            // Create and configure the input dialog window
-            Window inputDialog = new Window
-            {
-                Title = "Enter Activation Key",
-                Width = 300,
-                Height = 150,
-                WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                ResizeMode = ResizeMode.NoResize
-            };
-
-            StackPanel stackPanel = new StackPanel { Margin = new Thickness(10) };
-
-            // Add components to the dialog window
-            stackPanel.Children.Add(new TextBlock { Text = "Enter Activation Key:", Margin = new Thickness(0, 0, 0, 10) });
-            TextBox textBox = new TextBox { Width = 250, Margin = new Thickness(0, 0, 0, 10) };
-            stackPanel.Children.Add(textBox);
-
-            StackPanel buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Right };
-
-            // OK button
-            Button okButton = new Button { Content = "OK", Width = 75, Margin = new Thickness(0, 0, 10, 0) };
-            okButton.Click += (s, args) =>
-            {
-                inputDialog.DialogResult = true;
-                inputDialog.Close();
-            };
-            buttonPanel.Children.Add(okButton);
-
-            // Cancel button
-            Button cancelButton = new Button { Content = "Cancel", Width = 75 };
-            cancelButton.Click += (s, args) =>
-            {
-                inputDialog.DialogResult = false;
-                inputDialog.Close();
-            };
-            buttonPanel.Children.Add(cancelButton);
-
-            stackPanel.Children.Add(buttonPanel);
-            inputDialog.Content = stackPanel;
-
-            // Show dialog and set activation key if OK was clicked
-            if (inputDialog.ShowDialog() == true)
-            {
-                string activationKey = textBox.Text;
-                activationManager.WriteActivationKey(activationKey);
-                ActivationKeyText.Text = activationManager.ReadActivationKey().Replace("Stand-Activate-", "");
-            }
+            activationManager.SetActivationKey(ActivationKeyText);
         }
 
         private void HotkeyButton_Click(object sender, RoutedEventArgs e)
@@ -208,14 +145,14 @@ namespace StandSupportTool
             PowerShellExecutor.ExecuteAddMpPreference();
         }
 
-        private void Test_Click(object sender, RoutedEventArgs e)
+        private void Launchpad_Click(object sender, RoutedEventArgs e)
         {
-            TestManager.PerformTest();
+            LaunchpadManager.PerformTest();
         }
 
-        private void RunTest_Click(object sender, RoutedEventArgs e)
+        private void DisplayAntivirusInfo_Click(object sender, RoutedEventArgs e)
         {
-            List<AntivirusInfo> avInfos = antivirusInfo.get();
+            List<AntivirusInfo> avInfos = antivirusInfo.GetAntivirusInfo();
             string message = "Detected Antiviruses:\n";
 
             foreach (AntivirusInfo info in avInfos)
@@ -223,7 +160,7 @@ namespace StandSupportTool
                 message += info.DisplayName + " at: " + info.ExePath + "\n";
             }
 
-            MessageBox.Show(message, "Av Checker", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show(message, "Antivirus Information", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void Dashboard_Click(object sender, RoutedEventArgs e)

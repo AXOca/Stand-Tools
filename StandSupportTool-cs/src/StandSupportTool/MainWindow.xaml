@@ -202,9 +202,9 @@
 
             <Button Content="Dashboard" Click="Dashboard_Click" Height="28" FontSize="14" Grid.Column="0" HorizontalAlignment="Stretch"/>
             <Button Content="Hotkeys" Click="HotkeyButton_Click" Height="28" FontSize="14" Grid.Column="1" HorizontalAlignment="Stretch"/>
-            <Button Content="DL Launchpad" Click="Test_Click" Height="28" FontSize="14" Grid.Column="2" HorizontalAlignment="Stretch"/>
+            <Button Content="DL Launchpad" Click="Launchpad_Click" Height="28" FontSize="14" Grid.Column="2" HorizontalAlignment="Stretch"/>
             <Button Content="Add Exclusion" Click="AddStandToExclusionsV2_Click" Height="28" FontSize="14" Grid.Column="3" HorizontalAlignment="Stretch"/>
-            <Button Content="AV Checker" Click="RunTest_Click" Height="28" FontSize="14" Grid.Column="4" HorizontalAlignment="Stretch"/>
+            <Button Content="AV Checker" Click="DisplayAntivirusInfo_Click" Height="28" FontSize="14" Grid.Column="4" HorizontalAlignment="Stretch"/>
         </Grid>
 
         <!-- Protocol Section -->

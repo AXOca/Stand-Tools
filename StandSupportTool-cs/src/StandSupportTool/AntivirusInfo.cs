@@ -10,7 +10,7 @@ namespace StandSupportTool
         public string DisplayName { get; set; }
         public string ExePath { get; set; }
 
-        public List<AntivirusInfo> get()
+        public List<AntivirusInfo> GetAntivirusInfo()
         {
             List<AntivirusInfo> antivirusInfos = new List<AntivirusInfo>();
             try
