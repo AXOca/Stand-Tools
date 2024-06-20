@@ -30,7 +30,6 @@
             <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="Width" Value="150"/>
-            <!-- Fixed Width for consistency -->
             <Setter Property="Content" Value="Update Available"/>
             <Setter Property="Template">
                 <Setter.Value>

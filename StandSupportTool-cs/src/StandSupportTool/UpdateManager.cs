@@ -2,24 +2,17 @@
 using System.Diagnostics;
 using System.IO;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace StandSupportTool
 {
-    public class UpdateManager
+    public class UpdateManager(string currentVersion, string executablePath)
     {
         private const string VersionUrl = "https://raw.githubusercontent.com/AXOca/Stand-Tools/main/StandSupportTool-cs/version.txt";
         private const string DownloadUrl = "https://raw.githubusercontent.com/AXOca/Stand-Tools/main/StandSupportTool-cs/latest_build/StandSupportTool.exe";
-        private string CurrentVersion;
-        private string ExecutablePath;
-
-        public UpdateManager(string currentVersion, string executablePath)
-        {
-            CurrentVersion = currentVersion;
-            ExecutablePath = executablePath;
-        }
+        private readonly string currentVersion = currentVersion;
+        private readonly string executablePath = executablePath;
 
         public async Task<bool> CheckForUpdates()
         {
@@ -27,21 +20,15 @@ namespace StandSupportTool
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    string versionUrl = VersionUrl + "?t=" + DateTime.Now.Ticks;
-                    string latestVersion = await client.GetStringAsync(versionUrl);
-                    latestVersion = latestVersion.Trim(); // Ensure no extra spaces or newlines
-
-                    if (CompareVersions(latestVersion, CurrentVersion))
-                    {
-                        return true;
-                    }
+                    string latestVersion = (await client.GetStringAsync($"{VersionUrl}?t={DateTime.Now.Ticks}")).Trim();
+                    return CompareVersions(latestVersion, currentVersion);
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Failed to check for updates: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
             }
-            return false;
         }
 
         public async Task DownloadUpdate()
@@ -59,26 +46,21 @@ namespace StandSupportTool
 
                     string batchScript = $@"
                         @echo off
-                        echo Stopping current instance...
-                        taskkill /f /im {Path.GetFileName(ExecutablePath)} > nul 2>&1
+                        taskkill /f /im {Path.GetFileName(executablePath)} > nul 2>&1
                         timeout /t 2 /nobreak > nul
-                        echo Deleting old file...
-                        del /f ""{ExecutablePath}""
-                        if exist ""{ExecutablePath}"" (
+                        del /f ""{executablePath}""
+                        if exist ""{executablePath}"" (
                             echo Old file still exists, cannot replace.
                             pause
                             exit /b 1
                         )
-                        echo Moving new file to original location...
-                        move /y ""{tempFilePath}"" ""{ExecutablePath}""
+                        move /y ""{tempFilePath}"" ""{executablePath}""
                         if %errorlevel% neq 0 (
                             echo Error replacing the file.
                             pause
                             exit /b %errorlevel%
                         )
-                        echo Restarting application...
-                        start """" ""{ExecutablePath}""
-                        echo Cleaning up...
+                        start """" ""{executablePath}""
                         del ""{batchFilePath}""
                     ";
 
@@ -92,10 +74,8 @@ namespace StandSupportTool
 
                     Process.Start(processStartInfo);
 
-                    // Show the temporary file path in a message box for tracking
                     MessageBox.Show($"Update downloaded to: {tempFilePath}", "Update Info", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                    // Log the update process initiation
                     File.AppendAllText(Path.Combine(Path.GetTempPath(), "update_log.txt"), $"{DateTime.Now}: Update process initiated. Temp file path: {tempFilePath}\n");
 
                     Application.Current.Shutdown();
@@ -104,8 +84,6 @@ namespace StandSupportTool
             catch (Exception ex)
             {
                 MessageBox.Show($"Failed to download update: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
-                // Log the error
                 File.AppendAllText(Path.Combine(Path.GetTempPath(), "update_log.txt"), $"{DateTime.Now}: Error - {ex.Message}\n");
             }
         }
@@ -114,7 +92,6 @@ namespace StandSupportTool
         {
             Version v1 = new Version(latestVersion);
             Version v2 = new Version(currentVersion);
-
             return v1 > v2;
         }
     }
