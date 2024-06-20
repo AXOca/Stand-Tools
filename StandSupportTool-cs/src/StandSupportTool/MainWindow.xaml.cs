@@ -20,6 +20,8 @@ namespace StandSupportTool
         private static ClearHotkeysManager clearHotkeysManager = new ClearHotkeysManager();
         private static UpdateManager updateManager;
         private static AntivirusInfo antivirusInfo = new AntivirusInfo();
+        private static DashboardLinkOpener dashboardLinkOpener = new DashboardLinkOpener();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -192,7 +194,8 @@ namespace StandSupportTool
 
         private void HotkeyButton_Click(object sender, RoutedEventArgs e)
         {
-            hotkeyManager.ConfigureHotkeys();
+            HotkeysTable hotkeysTable = new HotkeysTable();
+            hotkeysTable.Show();
         }
 
         private void OpenYouTubeLink_Click(object sender, RoutedEventArgs e)
@@ -223,9 +226,9 @@ namespace StandSupportTool
             MessageBox.Show(message, "Av Checker", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
-        private void ClearH_Click(object sender, RoutedEventArgs e)
+        private void Dashboard_Click(object sender, RoutedEventArgs e)
         {
-            clearHotkeysManager.ClearHotkeys();
+            dashboardLinkOpener.OpenDashboardLink();
         }
     }
 }
