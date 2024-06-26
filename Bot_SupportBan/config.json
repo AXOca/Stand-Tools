@@ -1,0 +1,7 @@
+{
+    "bot_token": "INSERT_TOKEN_HERE",
+    "role_id": SUPPORT-BAN-ROLE_ID,
+    "guild_id": GUILD_ID,
+    "log_channel_id": LOG_CHANNEL_ID,
+    "message_template": "You were banned from xyz until <t:timestamp:f>"
+}

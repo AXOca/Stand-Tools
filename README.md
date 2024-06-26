@@ -11,6 +11,7 @@ More to follow...
 - [Discord Anticrash](https://github.com/AXOca/Stand-Tools/tree/main/Bot_AntiCrash) - Bot to detect and remove potentially harmful attachments. *[Some functionalities are broken.]* 
 - [Discord DebugStuff](https://github.com/AXOca/Stand-Tools/tree/main/Bot_DebugStuff) - Moderation bot with custom ban notifications and more. *[Some functionalities are broken.]* 
 - [Discord Ununicodify](https://github.com/AXOca/Stand-Tools/tree/main/Bot_ununicodify) - *
+- [Discord SupportBan](https://github.com/AXOca/Stand-Tools/tree/main/Bot_SupportBan) - A Discord bot to temporarily ban users from the #support-and-help channel.
 
 ### Discontinued Projects
 - [Discord PollDetection](https://github.com/AXOca/Stand-Tools/tree/main/Bot_PollDetection) - Bot to detect and manage poll messages.
